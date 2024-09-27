@@ -1,0 +1,52 @@
+﻿@model IEnumerable<ContactAppRoleBasedLogin.Models.Contact>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" id="contactList">
+    <p>
+        <div>
+            <button type="button" class="btn btn-outline-dark" id="btnAddContact">
+                Add New Contact
+            </button>
+        </div>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="tblBody">
+            <!--data comes from ajax-->
+        </tbody>
+    </table>
+</div>
+<div id="newContact" style="display:none" class="container">
+    @Html.Partial("_AddContactPartial")
+</div>
+<div id="editContact" style="display:none" class="container">
+    @Html.Partial("_EditContactPartial")
+</div>
+<script src="~/Scripts/ContactCrud.js"></script>
+<script>
+    $(document).ready(() => {
+        loadContacts();
+    })
+    $("#btnAddContact").click(() => {
+        $("#contactList").hide()
+        $("#newContact").show()
+    })
+</script>

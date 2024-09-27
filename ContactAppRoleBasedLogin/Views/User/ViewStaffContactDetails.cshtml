@@ -1,0 +1,34 @@
+﻿@model IEnumerable<ContactAppRoleBasedLogin.Models.ContactDetail>
+
+@{
+    ViewBag.Title = "ViewStaffContactDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View Staff Contact Details</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+    </tr>
+}
+
+</table>
+<div>
+    @Html.ActionLink("Back to Staff List", "ViewAllStaff", null, new { @class = "btn btn-outline-dark my-3" })
+</div>

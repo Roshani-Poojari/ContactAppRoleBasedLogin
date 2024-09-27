@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" id="contactDetailList">
+    <h2>List of Contact Details</h2>
+
+    <table id="contactDetailGrid"></table>
+    <div id="pager"></div> <!--jqgrid pager-->
+    @Html.ActionLink("Back to Contact List", "Index","Contact",null, new { @class = "btn btn-outline-dark my-3" })
+
+</div>
+@*formatting and displaying JqGrid*@
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/redmond/jquery-ui.css">
+<script src="~/Scripts/ContactDetailCrud.js"></script>

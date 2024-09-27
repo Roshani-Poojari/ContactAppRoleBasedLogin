@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ContactAppRoleBasedLogin.Models.User>
+
+@{
+    ViewBag.Title = "ViewAllAdmins";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List of Admins</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                <input type="checkbox" class="is-active-checkbox" data-userid="@item.Id" @(item.IsActive ? "checked" : "") />
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditUser", new { userId = item.Id }, new { @class = "btn btn-outline-dark mx-3" })
+            </td>
+        </tr>
+    }
+
+</table>
+<div>
+    @Html.ActionLink("Back to Staff List", "ViewAllStaff",null, new { @class = "btn btn-outline-dark my-3" })
+</div>
+<script src="~/Scripts/ToggleUserIsActive.js"></script>
